@@ -1,0 +1,44 @@
+<?script src="jit.js" ?>
+<?script src="sample.js" ?>
+<zk xmlns:w="client">
+	<style>
+		.container {
+			width: 600px;
+			background-color: #1A1A1A;
+			color: #CCC;
+		}
+	</style>
+	<window id="mainWin"
+		apply="org.zkoss.sample.jslibinteg.SpaceTreeComposer">
+		<vlayout>
+			<div sclass="container">
+				<div id="infovis" width="600px" height="600px" />
+			</div>
+			<groupbox width="600px">
+				<caption label="Add/Remove Nodes"/>
+			<hlayout width="590px">
+				<textbox hflex="1" id="nodeTxt" />
+				<button id="add" label="Add" />
+				<button id="refresh" label="Refresh" />
+			</hlayout>
+			</groupbox>
+			<groupbox width="600px">
+				<caption label="Switch Orientation"/>
+			<hlayout width="590px">
+				<button id="switchToLeft" label="Left" w:onClick='switchPosition("left")' hflex="true"/>
+				<button id="switchToRight" label="Right" w:onClick='switchPosition("right")' hflex="true"/>
+				<button id="switchToTop" label="Top" w:onClick='switchPosition("top")' hflex="true"/>
+				<button id="switchToBottom" label="Bottom" w:onClick='switchPosition("bottom")' hflex="true"/>
+			</hlayout >
+			</groupbox>
+			<groupbox width="600px">
+				<caption label="Switch Alignment"/>
+			<hlayout width="590px">
+				<button id="alignToLeft" label="Align Left" w:onClick='switchAlignment("left")' hflex="true"/>
+				<button id="alignToCenter" label="Align Center" w:onClick='switchAlignment("center")' hflex="true"/>
+				<button id="alignToRight" label="Align Right" w:onClick='switchAlignment("right")' hflex="true"/>
+			</hlayout>
+			</groupbox>
+		</vlayout>
+	</window>
+</zk>
