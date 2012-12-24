@@ -1,0 +1,48 @@
+<?script src="jit.js" ?>
+<?script src="sampleAdv.js" ?>
+<zk xmlns:w="client">
+	<style>
+		.container {
+			width: 600px;
+			background-color: #1A1A1A;
+			color: #CCC;
+			padding: 2px;
+		}
+		.containerSelected {
+			width: 600px;
+			background-color: #1A1A1A;
+			color: #CCC;
+			border: 2px solid red;
+			padding: 0px;
+		}
+	</style>
+	<window id="mainWin"
+		apply="org.zkoss.sample.jslibinteg.SpaceTreeComposerAdv">
+		<vlayout>
+			<label id="selectedST" visible="false" value="infovis"></label>
+			<div sclass="containerSelected">
+				<div id="infovis" w:use="zul.wgt.InfovisDiv" width="600px" height="300px" w:onClick='this.$f("selectedST").setValue("infovis");this.parent.setSclass("containerSelected");this.parent.nextSibling.setSclass("container")'/>
+			</div>
+			<div sclass="container">
+				<div id="infovis2" w:use="zul.wgt.InfovisDiv" width="600px" height="300px" w:onClick='this.$f("selectedST").setValue("infovis2");this.parent.setSclass("containerSelected");this.parent.previousSibling.setSclass("container")' />
+			</div>
+			<groupbox width="600px">
+				<caption label="Add/Remove Nodes"/>
+			<hlayout width="590px">
+				<textbox hflex="1" id="nodeTxt" />
+				<button id="add" label="Add" />
+				<button id="refresh" label="Refresh" />
+			</hlayout>
+			</groupbox>
+			<groupbox width="600px">
+				<caption label="Switch Orientation"/>
+			<hlayout width="590px">
+				<button id="switchToLeft" label="Left" w:onClick='zk.Widget.$("$" + zk.Widget.$("$selectedST").getValue())._switchPosition("left")' hflex="true"/>
+				<button id="switchToRight" label="Right" w:onClick='zk.Widget.$("$" + zk.Widget.$("$selectedST").getValue())._switchPosition("right")' hflex="true"/>
+				<button id="switchToTop" label="Top" w:onClick='zk.Widget.$("$" + zk.Widget.$("$selectedST").getValue())._switchPosition("top")' hflex="true"/>
+				<button id="switchToBottom" label="Bottom" w:onClick='zk.Widget.$("$" + zk.Widget.$("$selectedST").getValue())._switchPosition("bottom")' hflex="true"/>
+			</hlayout >
+			</groupbox>
+		</vlayout>
+	</window>
+</zk>
