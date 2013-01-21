@@ -1,6 +1,5 @@
 zk.load("zul.wgt", function () {
 	zul.wgt.InfovisDiv = zk.$extends(zul.wgt.Div, {
-		_st : {},
 		_labelType : '',
 		_useGradients : '',
 		_nativeTextSupport: false,
