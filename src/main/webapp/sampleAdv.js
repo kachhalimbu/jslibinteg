@@ -1,4 +1,3 @@
-
 zk.load("zul.wgt", function () {
 	zul.wgt.InfovisDiv = zk.$extends(zul.wgt.Div, {
 		_st : {},
@@ -24,16 +23,6 @@ zk.load("zul.wgt", function () {
 		unbind_: function () {
 	        this.$supers('unbind_', arguments);
 	    },
-		_refresh: function (treeData) {
-			this._st.loadJSON(jq.evalJSON(treeData));
-		    //compute node positions and layout
-		    this._st.compute();
-		    //optional: make a translation of the tree
-		    this._st.geom.translate(new $jit.Complex(-200, 0), "current");
-		    //Emulate a click on the root node. 
-		    this._st.onClick(this._st.root);
-		    //end
-		},
 		_init: function(treeData){
 			var removing = false;
 		    //init Spacetree
