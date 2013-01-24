@@ -17,6 +17,8 @@ public class SpaceTreeComposerAdv extends SelectorComposer<Window> {
 	public String treeData;
 	private String treeData2;
 	private String selectedST = "infovis";
+	SpaceTreeNode root1 = null;
+	SpaceTreeNode root2 = null;
 	
 	public void doBeforeComposeChildren(Window win) throws Exception {
 		super.doBeforeComposeChildren(win);
@@ -28,7 +30,7 @@ public class SpaceTreeComposerAdv extends SelectorComposer<Window> {
 		SpaceTreeNode rnode1 = new SpaceTreeNode("rnode1", "Node 1", new JSONObject(), rNode1Children);
 		root1Children.add(rnode1);
 
-		SpaceTreeNode root1 = new SpaceTreeNode("ROOT1", "ROOT1", new JSONObject(), root1Children);
+		root1 = new SpaceTreeNode("ROOT1", "ROOT1", new JSONObject(), root1Children);
 		treeData = root1.toJSONString();
 
 		JSONArray rNode2Children = new JSONArray();
@@ -39,7 +41,7 @@ public class SpaceTreeComposerAdv extends SelectorComposer<Window> {
 		SpaceTreeNode rnode2 = new SpaceTreeNode("rnode2", "Node 1", new JSONObject(), rNode2Children);
 
 		root2Children.add(rnode2);
-		SpaceTreeNode root2 = new SpaceTreeNode("ROOT2", "ROOT2", new JSONObject(), root2Children);
+		root2 = new SpaceTreeNode("ROOT2", "ROOT2", new JSONObject(), root2Children);
 		treeData2 = root2.toJSONString();
 	
 	}
@@ -63,8 +65,8 @@ public class SpaceTreeComposerAdv extends SelectorComposer<Window> {
 	
 	public void doAfterCompose(Window comp) throws Exception {
 		super.doAfterCompose(comp);
-		Clients.response(new AuInvoke(infovis, "_init", treeData));
-		Clients.response(new AuInvoke(infovis2, "_init", treeData2));
+		Clients.response(new AuInvoke(infovis, "_init", root1));
+		Clients.response(new AuInvoke(infovis2, "_init", root2));
 	}
 	
 	@Listen("#infovis; #infovis2")
@@ -88,8 +90,8 @@ public class SpaceTreeComposerAdv extends SelectorComposer<Window> {
 	@Listen("onClick= #refresh")
 	public void refreshTree() {
 		System.out.println("Refreshing whole SpaceTree on server side!!!");
-		Clients.response(new AuInvoke(infovis, "_init", treeData));
-		Clients.response(new AuInvoke(infovis2, "_init", treeData2));
+		Clients.response(new AuInvoke(infovis, "_init", root1));
+		Clients.response(new AuInvoke(infovis2, "_init", root2));
 	}
 	
 	@Listen("onRemove= #infovis")
