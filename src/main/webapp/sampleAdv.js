@@ -25,7 +25,7 @@ zk.load("zul.wgt", function () {
 	        this.$supers('unbind_', arguments);
 	    },
 		_refresh: function (treeData) {
-			this._st.loadJSON(jq.evalJSON(treeData));
+			this._st.loadJSON(treeData);
 		    //compute node positions and layout
 		    this._st.compute();
 		    //optional: make a translation of the tree
@@ -135,7 +135,7 @@ zk.load("zul.wgt", function () {
 		    });
 		},
 		_refresh: function(treeData) {
-		    this._st.loadJSON(jq.evalJSON(treeData));
+		    this._st.loadJSON(treeData);
 		    //compute node positions and layout
 		    this._st.compute();
 		    //optional: make a translation of the tree
